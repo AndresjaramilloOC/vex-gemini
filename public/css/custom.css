@@ -1,0 +1,21 @@
+body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+#chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; margin-bottom: 10px; }
+.mensaje { margin: 5px 0; }
+.user { font-weight: bold; color: blue; }
+.bot { font-weight: bold; color: green; }
+.mensaje div {
+    margin-left: 1em;
+    color: #333;
+}
+
+
+.respuesta ul {
+    padding-left: 1.2em;
+    margin-top: 0.5em;
+}
+.respuesta li {
+    margin-bottom: 0.4em;
+}
+.respuesta strong {
+    color: #444;
+}

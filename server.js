@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const path = require('path');
+const { marked } = require('marked'); // 👈 NUEVO
 require('dotenv').config();
 
 const app = express();
@@ -29,9 +30,9 @@ app.post('/chat', async (req, res) => {
     );
     console.log("Respuesta cruda de Gemini:", JSON.stringify(response.data, null, 2));
 
-
-    const reply = response.data.candidates?.[0]?.content?.parts?.[0]?.text || "Sin respuesta";
-    res.json({ response: reply });
+    const markdownReply = response.data.candidates?.[0]?.content?.parts?.[0]?.text || "Sin respuesta";
+    const htmlReply = marked.parse(markdownReply); // 👈 convierte Markdown a HTML
+    res.json({ response: htmlReply });
 
   } catch (error) {
     console.error(error.response?.data || error.message);
@@ -39,9 +40,8 @@ app.post('/chat', async (req, res) => {
   }
 });
 
-// Redireccionar a index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html')); // ✅
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
