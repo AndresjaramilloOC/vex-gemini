@@ -1,1 +1,15 @@
 AIzaSyD1MY9ROqFLNoBXkTAMQ_sf0AwgL_mBqSQ
+npm run dev
+nodemon server.jsn
+pm install marked
+npm install express axios cors dotenv
+npm init y
+
+171819.L05
+171819.L05
+
+
+ollama run llama2
+ollama pull nomic-embed-text
+
+
